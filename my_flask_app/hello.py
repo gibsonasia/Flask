@@ -32,7 +32,7 @@ class User(Resource):
 
         for user in users:
             if name == user["name"]:
-                return  "User with the name {} already exist".format(name), 400
+                return "User with the name {} already exist".format(name), 400
         user = {
             "name": name,
             "age": args["age"],
@@ -41,6 +41,6 @@ class User(Resource):
         users.append(user)
         return user, 201
 
-    def put(self, name):
+    #def put(self, name):
 
-    def delete(self, name):
+    #def delete(self, name):
