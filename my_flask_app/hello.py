@@ -27,9 +27,9 @@ class User(Resource):
         return "User not found", 404
 
     def post(self, name):
-        parser = reqparse.RequestsParser()
-        parser.add_arguement("age")
-        parser.add_arguement("password")
+        parser = reqparse.RequestParser()
+        parser.add_argument("age")
+        parser.add_argument("password")
         args = parser.parse_args()
 
         for user in users:
@@ -44,9 +44,9 @@ class User(Resource):
         return user, 201
 
     def put(self, name):
-        parser = reqparse.RequestsParser()
-        parser.add_arguement("age")
-        parser.add_arguement("password")
+        parser = reqparse.RequestParser()
+        parser.add_argument("age")
+        parser.add_argument("password")
         args = parser.parse_args()
 
         for user in users:
