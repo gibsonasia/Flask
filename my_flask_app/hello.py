@@ -1,13 +1,13 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
 
-app= Flask(__name__)
+app = Flask(__name__)
 api = Api(app)
 
 users = [
     {
         "name": "bob",
-        "age":22,
+        "age": 22,
         "password": "hello"
     },
     {
@@ -18,8 +18,9 @@ users = [
 
 ]
 
+
 class User(Resource):
-    def get(self,name):
+    def get(self, name):
         for user in users:
             if name == user["name"]:
                 return user, 200
@@ -29,7 +30,7 @@ class User(Resource):
         parser = reqparse.RequestsParser()
         parser.add_arguement("age")
         parser.add_arguement("password")
-        args= parser.parse_args()
+        args = parser.parse_args()
 
         for user in users:
             if name == user["name"]:
@@ -61,8 +62,8 @@ class User(Resource):
 
     def delete(self, name):
         global users
-        users =[user for user in users if user["name"] != name]
-        return "{} is deleted.".format(name),200
+        users = [user for user in users if user["name"] != name]
+        return "{} is deleted.".format(name), 200
 
 
 api.add_resource(User, "/user/<string:name>")
